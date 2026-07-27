@@ -1,6 +1,6 @@
 # Vitor Benedito Ribeiro Batista
 
-Estudante de Sistemas de Informação (SI) na UFPA. Sou persistente, determinado e gosto de colocar a mão na massa — aprendo fazendo, testando e ajustando até funcionar de verdade.
+Estudante de Sistemas de Informação (SI) na Universidade Federal do Pará(UFPA). Sou persistente, determinado e gosto de colocar a mão na massa — aprendo fazendo, testando e ajustando até funcionar de verdade.
 
 ## 🎯 Interesses
 
