@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="140" viewBox="0 0 1200 140" role="img" aria-label="Aprendo fazendo, testando e ajustando até funcionar de verdade.">
+  <defs>
+    <linearGradient id="w1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7b3fa0"/>
+      <stop offset="1" stop-color="#3ddc97"/>
+    </linearGradient>
+    <clipPath id="frame"><rect width="1200" height="140" rx="18"/></clipPath>
+  </defs>
+  <style>
+    .mono { font-family: Consolas, 'DejaVu Sans Mono', 'SFMono-Regular', Menlo, monospace; }
+    .wave1 { animation: slide 12s linear infinite; }
+    .wave2 { animation: slide 18s linear infinite reverse; }
+    @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-600px); } }
+    .cursor { animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <g clip-path="url(#frame)">
+    <rect width="1200" height="140" fill="#0d1117"/>
+    <path class="wave2" opacity="0.25" fill="url(#w1)"
+      d="M0 100 Q150 70 300 100 T600 100 T900 100 T1200 100 T1500 100 T1800 100 V140 H0 Z"/>
+    <path class="wave1" opacity="0.5" fill="url(#w1)"
+      d="M0 115 Q150 95 300 115 T600 115 T900 115 T1200 115 T1500 115 T1800 115 V140 H0 Z"/>
+    <text x="600" y="58" text-anchor="middle" class="mono" font-size="17">
+      <tspan fill="#8b949e">// </tspan><tspan fill="#e6edf3">aprendo fazendo, testando e ajustando até funcionar de verdade</tspan><tspan class="cursor" fill="#3ddc97">▍</tspan>
+    </text>
+  </g>
+</svg>
