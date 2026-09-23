@@ -1,31 +1,31 @@
-# Vitor Benedito Ribeiro Batista
+# Salve este arquivo em: .github/workflows/snake.yml
+# (no repositório vitorbatista-hub/vitorbatista-hub)
+name: Generate Snake
 
-Estudante de Sistemas de Informação (SI) na Universidade Federal do Pará(UFPA). Sou persistente, determinado e gosto de colocar a mão na massa — aprendo fazendo, testando e ajustando até funcionar de verdade.
+on:
+  schedule:
+    - cron: "0 */12 * * *"   # atualiza a cada 12h
+  workflow_dispatch:          # permite rodar manualmente
+  push:
+    branches: [main]
 
-## 🎯 Interesses
+permissions:
+  contents: write
 
-- **Backend** — Construção de serviços, lógica de aplicações e integração entre sistemas
-- **IA & LLMs** — Experimentos com modelos locais e integração com aplicações
-- **Desenvolvimento Android** — Criação de aplicativos móveis
-- **Desenvolvimento Web** — Construção de páginas e aplicações web
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
 
-## 🛠️ Tecnologias
-
-| Tecnologia | Contexto |
-|---|---|
-| ☕ Java | Linguagem principal — backend, POO e estruturas de dados |
-| 🐍 Python | Automação de tarefas e testes rápidos de ideias |
-| 🐳 Docker | Isolamento de ambientes e organização de serviços |
-| 🔧 Git e GitHub | Controle de versão de projetos pessoais e da faculdade |
-| 🐧 Linux | Sistema usado no dia a dia para configurar e estudar |
-| 🦙 Ollama | Rodando e testando modelos de IA localmente |
-
-## 🌐 Idiomas
-
-- **Português** — Nativo
-- **Inglês** — Leitura e compreensão oral; uso diário para estudos, projetos pessoais e acadêmicos
-
-## 📬 Contato
-
-- E-mail: [vitorbenedito93@gmail.com](mailto:vitorbenedito93@gmail.com)
-- GitHub: [github.com/vitorbatista-hub](https://github.com/vitorbatista-hub)
+      - uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
