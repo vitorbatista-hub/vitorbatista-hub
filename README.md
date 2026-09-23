@@ -77,6 +77,10 @@ Meu foco hoje:
   <a href="https://github.com/Rafael-CRL/prev_dentistas_saas"><img src="./assets/projects/rafael-crl-prev-dentistas-saas.svg" width="88%" alt="prev_dentistas_saas — projeto no GitHub" /></a>
 </p>
 
+<p align="center">
+  <a href="https://github.com/Rafael-CRL/WumpusWorld"><img src="./assets/projects/rafael-crl-wumpusworld.svg" width="88%" alt="WumpusWorld — Atividade da Disciplina" /></a>
+</p>
+
 <!-- PROJETOS:END -->
 
 <br/>
