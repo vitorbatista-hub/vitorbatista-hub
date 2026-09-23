@@ -13,6 +13,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: update-projects
+  cancel-in-progress: false
+
 jobs:
   update:
     runs-on: ubuntu-latest
