@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="218" viewBox="0 0 880 218" role="img" aria-label="Mentis — ativo">
+  <!-- Gerado por scripts/update_projects.py — não edite à mão. -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#161b22"/>
+      <stop offset="1" stop-color="#1c0f2b"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .sans { font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', Arial, sans-serif; }
+    .mono { font-family: Consolas, 'DejaVu Sans Mono', 'SFMono-Regular', Menlo, monospace; }
+    .pulse { animation: pulse 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+    .in { opacity: 0; animation: in .5s ease-out .3s forwards; }
+    @keyframes in { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; opacity: 1 !important; transform: none !important; } }
+  </style>
+
+  <rect x="0.5" y="0.5" width="879" height="217" rx="16" fill="url(#bg)" stroke="#30363d"/>
+
+  <!-- cabeçalho -->
+  <text x="40" y="58" class="sans" font-size="26" font-weight="700" fill="#f0e6ff">Mentis</text>
+  <g>
+    <rect x="759" y="36" width="81" height="26" rx="13" fill="#3ddc97" fill-opacity="0.12" stroke="#3ddc97" stroke-opacity="0.5"/>
+    <circle class="pulse" cx="775" cy="49" r="4.5" fill="#3ddc97"/>
+    <text x="787" y="54" class="sans" font-size="13" font-weight="600" fill="#bff5dc">ativo</text>
+  </g>
+  <g class="sans" font-size="16" fill="#b1bac4">
+    <text x="40" y="92">Plataforma em concepção para apoiar o cuidado psicossocial na Amazônia, conectando pacientes dos</text>
+    <text x="40" y="116">CAPS, cuidadores e profissionais de saúde.</text>
+  </g>
+  <text x="40" y="150" class="mono in" font-size="13" fill="#8b949e">2 commits  ·  atualizado em 11 set 2026</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="194" viewBox="0 0 880 194" role="img" aria-label="PROJETO-LAFOCA — sem commits recentes">
+  <!-- Gerado por scripts/update_projects.py — não edite à mão. -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#161b22"/>
+      <stop offset="1" stop-color="#1c0f2b"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .sans { font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', Arial, sans-serif; }
+    .mono { font-family: Consolas, 'DejaVu Sans Mono', 'SFMono-Regular', Menlo, monospace; }
+    .pulse { animation: pulse 1.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+    .in { opacity: 0; animation: in .5s ease-out .3s forwards; }
+    @keyframes in { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; opacity: 1 !important; transform: none !important; } }
+  </style>
+
+  <rect x="0.5" y="0.5" width="879" height="193" rx="16" fill="url(#bg)" stroke="#30363d"/>
+
+  <!-- cabeçalho -->
+  <text x="40" y="58" class="sans" font-size="26" font-weight="700" fill="#f0e6ff">PROJETO-LAFOCA</text>
+  <g>
+    <rect x="664" y="36" width="176" height="26" rx="13" fill="#8b949e" fill-opacity="0.12" stroke="#8b949e" stroke-opacity="0.5"/>
+    <text x="752.0" y="54" text-anchor="middle" class="sans" font-size="13" font-weight="600" fill="#c9d1d9">sem commits recentes</text>
+  </g>
+  <g class="sans" font-size="16" fill="#b1bac4">
+    <text x="40" y="92">Projeto sem descrição no GitHub.</text>
+  </g>
+  <text x="40" y="126" class="mono in" font-size="13" fill="#8b949e">3 commits  ·  atualizado em 3 jun 2025</text>
+
+  <!-- tags -->
+  <g class="mono" font-size="12.5">
+    <rect x="40" y="148" width="50" height="24" rx="6" fill="#e34c26" fill-opacity="0.22"/><text x="65.0" y="164" text-anchor="middle" fill="#f2ae9d">HTML</text>
+    <rect x="98" y="148" width="43" height="24" rx="6" fill="#663399" fill-opacity="0.22"/><text x="119.5" y="164" text-anchor="middle" fill="#baa3d1">CSS</text>
+  </g>
+</svg>

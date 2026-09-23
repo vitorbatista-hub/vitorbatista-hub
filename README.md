@@ -58,11 +58,26 @@ Meu foco hoje:
   <img src="./assets/acaiconecta.svg" width="88%" alt="AçaíConecta — plataforma de delivery para as batedeiras de açaí de Cametá, em desenvolvimento" />
 </p>
 
-<!--
-  Para adicionar outro projeto, use o modelo abaixo trocando NOME-DO-REPO e a descrição:
+<!-- PROJETOS:START -->
+<!-- Gerado por scripts/update_projects.py — não edite à mão. -->
 
-  - **[NOME-DO-REPO](https://github.com/vitorbatista-hub/NOME-DO-REPO)** · descrição curta do projeto
--->
+<p align="center">
+  <a href="https://github.com/vitorbatista-hub/Mentis"><img src="./assets/projects/vitorbatista-hub-mentis.svg" width="88%" alt="Mentis — Plataforma em concepção para apoiar o cuidado psicossocial na Amazônia, conectando pacientes dos CAPS, cuidadores e profissionais de saúde." /></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/vitorbatista-hub/PROJETO-LAFOCA"><img src="./assets/projects/vitorbatista-hub-projeto-lafoca.svg" width="88%" alt="PROJETO-LAFOCA — projeto no GitHub" /></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/meninassi-site/meninas-si-arquivos"><img src="./assets/projects/meninassi-site-meninas-si-arquivos.svg" width="88%" alt="meninas-si-arquivos — projeto no GitHub" /></a>
+</p>
+
+<p align="center">
+  <a href="https://github.com/Rafael-CRL/prev_dentistas_saas"><img src="./assets/projects/rafael-crl-prev-dentistas-saas.svg" width="88%" alt="prev_dentistas_saas — projeto no GitHub" /></a>
+</p>
+
+<!-- PROJETOS:END -->
 
 <br/>
 
