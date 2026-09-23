@@ -59,11 +59,9 @@ Meu foco hoje:
 </p>
 
 <!--
-  Para adicionar outro projeto como card, use o modelo abaixo trocando NOME-DO-REPO:
+  Para adicionar outro projeto, use o modelo abaixo trocando NOME-DO-REPO e a descrição:
 
-  <a href="https://github.com/vitorbatista-hub/NOME-DO-REPO">
-    <img width="49%" src="https://github-readme-stats.vercel.app/api/pin/?username=vitorbatista-hub&repo=NOME-DO-REPO&bg_color=0d1117&title_color=c9a8f5&text_color=c9d1d9&icon_color=3ddc97&border_color=30363d" />
-  </a>
+  - **[NOME-DO-REPO](https://github.com/vitorbatista-hub/NOME-DO-REPO)** · descrição curta do projeto
 -->
 
 <br/>
@@ -71,20 +69,7 @@ Meu foco hoje:
 ## `~/github`
 
 <p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=vitorbatista-hub&show_icons=true&include_all_commits=true&count_private=true&locale=pt-br&bg_color=0d1117&title_color=c9a8f5&text_color=c9d1d9&icon_color=3ddc97&border_color=30363d&border_radius=12" alt="Estatísticas no GitHub" />
-  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=vitorbatista-hub&layout=compact&langs_count=6&locale=pt-br&bg_color=0d1117&title_color=c9a8f5&text_color=c9d1d9&border_color=30363d&border_radius=12" alt="Linguagens mais usadas" />
-</p>
-
-<p align="center">
   <img src="https://streak-stats.demolab.com?user=vitorbatista-hub&locale=pt_BR&background=0d1117&border=30363d&stroke=30363d&ring=7b3fa0&fire=3ddc97&currStreakNum=f0e6ff&sideNums=f0e6ff&currStreakLabel=c9a8f5&sideLabels=c9a8f5&dates=8b949e&border_radius=12" alt="Sequência de contribuições" />
-</p>
-
-<p align="center">
-  <img width="100%" src="https://github-readme-activity-graph.vercel.app/graph?username=vitorbatista-hub&bg_color=0d1117&color=c9a8f5&line=7b3fa0&point=3ddc97&area=true&area_color=7b3fa0&hide_border=true&radius=12&custom_title=Atividade%20nos%20%C3%BAltimos%2030%20dias" alt="Gráfico de atividade" />
-</p>
-
-<p align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=vitorbatista-hub&theme=darkhub&no-frame=true&no-bg=true&column=-1&margin-w=12" alt="Troféus do GitHub" />
 </p>
 
 <p align="center">
