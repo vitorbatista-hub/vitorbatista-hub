@@ -260,9 +260,9 @@ def card_svg(repo, commits, tags):
         "    @keyframes in { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }",
         "    .borda { opacity: .15; animation: respira 6s ease-in-out 1s infinite; }",
         "    @keyframes respira { 0%,100% { opacity: .15; } 50% { opacity: .55; } }",
-        "    .brilho { transform: translateX(-320px) skewX(-20deg); animation: varre 2s ease-in-out .8s infinite; }",
+        "    .brilho { transform: translateX(-320px) skewX(-20deg); animation: varre 4s ease-in-out .8s infinite; }",
         "    @keyframes varre { 0% { transform: translateX(-320px) skewX(-20deg); }"
-        " 75%,100% { transform: translateX(1200px) skewX(-20deg); } }",
+        " 40%,100% { transform: translateX(1200px) skewX(-20deg); } }",
         "    .traco { transform-origin: 40px 0; transform: scaleX(0); animation: cresce .8s cubic-bezier(.2,.8,.2,1) .3s forwards; }",
         "    @keyframes cresce { to { transform: scaleX(1); } }",
         "    @media (prefers-reduced-motion: reduce) { * { animation: none !important; opacity: 1 !important; transform: none !important; }"
