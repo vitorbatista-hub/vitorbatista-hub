@@ -60,7 +60,7 @@ Meu foco hoje:
 <!-- Gerado por scripts/update_projects.py — não edite à mão. -->
 
 <p align="center">
-  <a href="https://github.com/vitorbatista-hub/AppRotinaAcademica"><img src="./assets/projects/vitorbatista-hub-approtinaacademica-6cc2e041.svg" width="88%" alt="AppRotinaAcademica — Rotina Acadêmica é um aplicativo mobile multiplataforma (Android, iOS e web) desenvolvido em React Native com Expo e TypeScript. O projeto nasceu como trabalho da disciplina Tópicos Especiais em Sistemas de Informação e é construído aos poucos, acompanhando as aulas. A ideia é aplicar na prática a criação de telas, a estilização e a navegação com E" /></a>
+  <a href="https://github.com/vitorbatista-hub/AppRotinaAcademica"><img src="./assets/projects/vitorbatista-hub-approtinaacademica-8ecb208f.svg" width="88%" alt="AppRotinaAcademica — Aplicativo mobile para organizar a rotina acadêmica de estudantes, desenvolvido com React Native, Expo (SDK 57) e Expo Router como trabalho da disciplina Tópicos Especiais em Sistemas de Informação." /></a>
 </p>
 
 <p align="center">
