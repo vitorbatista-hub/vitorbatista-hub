@@ -231,23 +231,46 @@ def card_svg(repo, commits, tags):
         '      <stop offset="0" stop-color="#161b22"/>',
         '      <stop offset="1" stop-color="#1c0f2b"/>',
         "    </linearGradient>",
+        '    <linearGradient id="acento" x1="0" y1="0" x2="1" y2="0">',
+        '      <stop offset="0" stop-color="#7b3fa0"/>',
+        '      <stop offset="1" stop-color="#3ddc97"/>',
+        "    </linearGradient>",
+        '    <linearGradient id="brilho" x1="0" y1="0" x2="1" y2="0">',
+        '      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>',
+        '      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.06"/>',
+        '      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>',
+        "    </linearGradient>",
+        f'    <clipPath id="forma"><rect width="880" height="{altura}" rx="16"/></clipPath>',
         "  </defs>",
         "  <style>",
         "    .sans { font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', Arial, sans-serif; }",
         "    .mono { font-family: Consolas, 'DejaVu Sans Mono', 'SFMono-Regular', Menlo, monospace; }",
+        "    .in { opacity: 0; animation: in .6s ease-out forwards; }",
+        "    @keyframes in { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }",
+        "    .borda { opacity: .15; animation: respira 6s ease-in-out 1s infinite; }",
+        "    @keyframes respira { 0%,100% { opacity: .15; } 50% { opacity: .55; } }",
+        "    .brilho { transform: translateX(-320px) skewX(-20deg); animation: varre 1.8s ease-in-out .8s forwards; }",
+        "    @keyframes varre { to { transform: translateX(1200px) skewX(-20deg); } }",
+        "    .traco { transform-origin: 40px 0; transform: scaleX(0); animation: cresce .8s cubic-bezier(.2,.8,.2,1) .3s forwards; }",
+        "    @keyframes cresce { to { transform: scaleX(1); } }",
+        "    @media (prefers-reduced-motion: reduce) { * { animation: none !important; opacity: 1 !important; transform: none !important; }"
+        " .brilho { display: none; } .borda { opacity: .3 !important; } }",
         "  </style>",
         "",
         f'  <rect x="0.5" y="0.5" width="879" height="{altura - 1}" rx="16" fill="url(#bg)" stroke="#30363d"/>',
+        f'  <rect class="borda" x="0.5" y="0.5" width="879" height="{altura - 1}" rx="16" fill="none" stroke="url(#acento)" stroke-width="1.5"/>',
+        f'  <g clip-path="url(#forma)"><rect class="brilho" x="0" y="0" width="160" height="{altura}" fill="url(#brilho)"/></g>',
         "",
-        f'  <text x="40" y="58" class="sans" font-size="26" font-weight="700" fill="#f0e6ff">{escape(titulo)}</text>',
-        '  <g class="sans" font-size="16" fill="#b1bac4">',
+        f'  <text x="40" y="58" class="sans in" font-size="26" font-weight="700" fill="#f0e6ff" style="animation-delay: .1s">{escape(titulo)}</text>',
+        '  <rect class="traco" x="40" y="69" width="36" height="3" rx="1.5" fill="url(#acento)"/>',
+        '  <g class="sans in" font-size="16" fill="#b1bac4" style="animation-delay: .25s">',
     ]
     for i, linha in enumerate(linhas):
         partes.append(f'    <text x="40" y="{y_desc + 24 * i}">{escape(linha)}</text>')
     partes.append("  </g>")
 
     partes.append(
-        f'  <text x="40" y="{y_info}" class="mono" font-size="13" fill="#8b949e">'
+        f'  <text x="40" y="{y_info}" class="mono in" font-size="13" fill="#8b949e" style="animation-delay: .4s">'
         f'{commits} commit{"s" if commits != 1 else ""}</text>'
     )
 
@@ -256,13 +279,14 @@ def card_svg(repo, commits, tags):
         partes.append("  <!-- tecnologias -->")
         partes.append('  <g class="mono" font-size="12.5">')
         x = 40
-        for nome, cor in tags:
+        for i, (nome, cor) in enumerate(tags):
             w = round(len(nome) * 7.6 + 20)
             if x + w > 840:
                 break
             partes.append(
-                f'    <rect x="{x}" y="{y_tags}" width="{w}" height="24" rx="6" fill="{cor}" fill-opacity="0.22"/>'
-                f'<text x="{x + w / 2}" y="{y_tags + 16}" text-anchor="middle" fill="{clarear(cor)}">{escape(nome)}</text>'
+                f'    <g class="in" style="animation-delay: {0.5 + 0.08 * i:.2f}s">'
+                f'<rect x="{x}" y="{y_tags}" width="{w}" height="24" rx="6" fill="{cor}" fill-opacity="0.22"/>'
+                f'<text x="{x + w / 2}" y="{y_tags + 16}" text-anchor="middle" fill="{clarear(cor)}">{escape(nome)}</text></g>'
             )
             x += w + 8
         partes.append("  </g>")

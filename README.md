@@ -60,19 +60,19 @@ Meu foco hoje:
 <!-- Gerado por scripts/update_projects.py — não edite à mão. -->
 
 <p align="center">
-  <a href="https://github.com/vitorbatista-hub/AppRotinaAcademica"><img src="./assets/projects/vitorbatista-hub-approtinaacademica-af0738b8.svg" width="88%" alt="AppRotinaAcademica — projeto no GitHub" /></a>
+  <a href="https://github.com/vitorbatista-hub/AppRotinaAcademica"><img src="./assets/projects/vitorbatista-hub-approtinaacademica-e2d4f332.svg" width="88%" alt="AppRotinaAcademica — projeto no GitHub" /></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/vitorbatista-hub/AcaiConecta"><img src="./assets/projects/vitorbatista-hub-acaiconecta-1366b409.svg" width="88%" alt="AcaiConecta — Plataforma digital que conecta consumidores a batedeiras de açaí tradicional em Cametá/PA." /></a>
+  <a href="https://github.com/vitorbatista-hub/AcaiConecta"><img src="./assets/projects/vitorbatista-hub-acaiconecta-5c9cdb59.svg" width="88%" alt="AcaiConecta — Plataforma digital que conecta consumidores a batedeiras de açaí tradicional em Cametá/PA." /></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/vitorbatista-hub/Mentis"><img src="./assets/projects/vitorbatista-hub-mentis-32d4fb59.svg" width="88%" alt="Mentis — Plataforma em concepção para apoiar o cuidado psicossocial na Amazônia, conectando pacientes dos CAPS, cuidadores e profissionais de saúde." /></a>
+  <a href="https://github.com/vitorbatista-hub/Mentis"><img src="./assets/projects/vitorbatista-hub-mentis-691729de.svg" width="88%" alt="Mentis — Plataforma em concepção para apoiar o cuidado psicossocial na Amazônia, conectando pacientes dos CAPS, cuidadores e profissionais de saúde." /></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/vitorbatista-hub/PROJETO-LAFOCA"><img src="./assets/projects/vitorbatista-hub-projeto-lafoca-b55aef2c.svg" width="88%" alt="PROJETO-LAFOCA — projeto no GitHub" /></a>
+  <a href="https://github.com/vitorbatista-hub/PROJETO-LAFOCA"><img src="./assets/projects/vitorbatista-hub-projeto-lafoca-160fe7e4.svg" width="88%" alt="PROJETO-LAFOCA — projeto no GitHub" /></a>
 </p>
 
 <!-- PROJETOS:END -->
