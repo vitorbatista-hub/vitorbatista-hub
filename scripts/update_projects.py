@@ -189,6 +189,20 @@ def tecnologias(repo):
 # ---------- desenho do card ----------
 
 def quebrar(texto, limite=96, max_linhas=2):
+    """Quebra o texto em linhas; se não couber, fica só com as frases inteiras que cabem."""
+    frases = re.split(r"(?<=[.!?])\s+", texto.strip())
+    for n in range(len(frases) - 1, 0, -1):
+        if len(_linhas(texto, limite)) <= max_linhas:
+            break
+        texto = " ".join(frases[:n])
+    linhas = _linhas(texto, limite)
+    if len(linhas) > max_linhas:
+        linhas = linhas[:max_linhas]
+        linhas[-1] = linhas[-1].rstrip(".,; ") + "…"
+    return linhas
+
+
+def _linhas(texto, limite):
     linhas, atual = [], ""
     for palavra in texto.split():
         if len(atual) + len(palavra) + 1 > limite:
@@ -198,9 +212,6 @@ def quebrar(texto, limite=96, max_linhas=2):
             atual = f"{atual} {palavra}".strip()
     if atual:
         linhas.append(atual)
-    if len(linhas) > max_linhas:
-        linhas = linhas[:max_linhas]
-        linhas[-1] = linhas[-1].rstrip(".,; ") + "…"
     return linhas
 
 
