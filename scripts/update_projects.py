@@ -3,70 +3,187 @@
 Gera os cards de projetos (assets/projects/*.svg) e reescreve o trecho do
 README entre os marcadores PROJETOS:START e PROJETOS:END.
 
-Busca na API do GitHub:
-  - repositórios públicos do usuário (sem forks);
-  - repositórios de outras pessoas em que o usuário fez commits ou PRs.
+Cada card mostra nome, descrição, quantidade de commits do usuário e as
+tecnologias do repositório: linguagens detectadas pelo GitHub mais frameworks,
+bancos e ferramentas encontrados nos arquivos do projeto (package.json,
+requirements.txt, pom.xml, Dockerfile, .sql...).
+
+Considera só os repositórios públicos do próprio usuário (sem forks).
 
 Uso: GITHUB_TOKEN=... python3 scripts/update_projects.py
 """
 
+import base64
+import hashlib
 import json
 import os
 import re
 import sys
+import urllib.error
 import urllib.request
 from pathlib import Path
 from xml.sax.saxutils import escape
 
 USER = os.environ.get("GITHUB_USER", "vitorbatista-hub")
 
-# Repositórios que não viram card automático (o AçaíConecta tem card próprio).
-IGNORAR = {"vitorbatista-hub", "AcaiConecta"}
+# Repositórios que não viram card (o do próprio perfil).
+IGNORAR = {"vitorbatista-hub"}
 
 RAIZ = Path(__file__).resolve().parent.parent
 PASTA_CARDS = RAIZ / "assets" / "projects"
 README = RAIZ / "README.md"
 INICIO, FIM = "<!-- PROJETOS:START -->", "<!-- PROJETOS:END -->"
 
+# Dependência (ou trecho dela) -> (nome exibido, cor da tag).
+TECNOLOGIAS = {
+    "next": ("Next.js", "#8b949e"),
+    "react-native": ("React Native", "#61dafb"),
+    "expo": ("Expo", "#8b949e"),
+    "react": ("React", "#61dafb"),
+    "vue": ("Vue", "#42b883"),
+    "@angular/core": ("Angular", "#dd0031"),
+    "svelte": ("Svelte", "#ff3e00"),
+    "express": ("Express", "#8b949e"),
+    "@nestjs/core": ("NestJS", "#e0234e"),
+    "tailwindcss": ("Tailwind CSS", "#38bdf8"),
+    "shadcn": ("shadcn/ui", "#8b949e"),
+    "@supabase/supabase-js": ("Supabase", "#3ecf8e"),
+    "firebase": ("Firebase", "#ffca28"),
+    "prisma": ("Prisma", "#5a67d8"),
+    "mysql2": ("MySQL", "#4479a1"),
+    "pg": ("PostgreSQL", "#336791"),
+    "mongoose": ("MongoDB", "#47a248"),
+    "django": ("Django", "#44b78b"),
+    "flask": ("Flask", "#8b949e"),
+    "fastapi": ("FastAPI", "#009688"),
+    "spring-boot": ("Spring Boot", "#6db33f"),
+}
+ARQUIVOS_DEPENDENCIAS = ("package.json", "requirements.txt", "pyproject.toml", "pom.xml", "build.gradle")
+
 QUERY = """
 query($login: String!) {
   user(login: $login) {
+    id
     repositories(first: 100, privacy: PUBLIC, isFork: false, ownerAffiliations: OWNER,
                  orderBy: {field: PUSHED_AT, direction: DESC}) {
-      nodes { ...repo }
-    }
-    repositoriesContributedTo(first: 50, includeUserRepositories: false,
-                              contributionTypes: [COMMIT, PULL_REQUEST],
-                              orderBy: {field: PUSHED_AT, direction: DESC}) {
-      nodes { ...repo }
+      nodes {
+        name
+        nameWithOwner
+        description
+        url
+        languages(first: 6, orderBy: {field: SIZE, direction: DESC}) { nodes { name color } }
+      }
     }
   }
 }
-fragment repo on Repository {
-  name
-  nameWithOwner
-  owner { login }
-  description
-  url
-  isPrivate
+"""
+
+QUERY_COMMITS = """
+query($owner: String!, $name: String!, $autor: ID!) {
+  repository(owner: $owner, name: $name) {
+    defaultBranchRef { target { ... on Commit { history(author: {id: $autor}) { totalCount } } } }
+  }
 }
 """
 
 
-def graphql(query, **variaveis):
-    token = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
-    if not token:
+def token():
+    t = os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
+    if not t:
         sys.exit("Defina GITHUB_TOKEN para acessar a API do GitHub.")
+    return t
+
+
+def graphql(query, **variaveis):
     req = urllib.request.Request(
         "https://api.github.com/graphql",
         data=json.dumps({"query": query, "variables": variaveis}).encode(),
-        headers={"Authorization": f"bearer {token}", "Content-Type": "application/json"},
+        headers={"Authorization": f"bearer {token()}", "Content-Type": "application/json"},
     )
     with urllib.request.urlopen(req) as resp:
         dados = json.load(resp)
     if dados.get("errors"):
         sys.exit(f"Erro da API do GitHub: {dados['errors']}")
     return dados["data"]
+
+
+def rest(caminho):
+    """GET na API REST; devolve None se o recurso não existir (ex.: repositório vazio)."""
+    req = urllib.request.Request(
+        f"https://api.github.com/{caminho}",
+        headers={"Authorization": f"bearer {token()}", "Accept": "application/vnd.github+json"},
+    )
+    try:
+        with urllib.request.urlopen(req) as resp:
+            return json.load(resp)
+    except urllib.error.HTTPError as erro:
+        if erro.code in (404, 409):
+            return None
+        raise
+
+
+def contar_commits(repo, autor_id):
+    dono, nome = repo["nameWithOwner"].split("/")
+    dados = graphql(QUERY_COMMITS, owner=dono, name=nome, autor=autor_id)
+    ref = (dados.get("repository") or {}).get("defaultBranchRef")
+    return ref["target"]["history"]["totalCount"] if ref else 0
+
+
+def ler_arquivo(repo, caminho):
+    dados = rest(f"repos/{repo['nameWithOwner']}/contents/{caminho}")
+    if not dados or "content" not in dados:
+        return ""
+    return base64.b64decode(dados["content"]).decode("utf-8", "replace")
+
+
+def tecnologias(repo):
+    """Linguagens do GitHub + frameworks/bancos/ferramentas achados nos arquivos."""
+    tags = [(l["name"], l["color"] or "#8b949e") for l in repo["languages"]["nodes"]]
+
+    arvore = rest(f"repos/{repo['nameWithOwner']}/git/trees/HEAD?recursive=1") or {}
+    caminhos = [
+        i["path"] for i in arvore.get("tree", [])
+        if i["type"] == "blob" and "node_modules/" not in i["path"]
+    ]
+    extras = []
+
+    for caminho in caminhos:
+        nome = caminho.rsplit("/", 1)[-1]
+        if nome not in ARQUIVOS_DEPENDENCIAS:
+            continue
+        conteudo = ler_arquivo(repo, caminho)
+        if nome == "package.json":
+            try:
+                pacote = json.loads(conteudo)
+            except ValueError:
+                continue
+            deps = {**pacote.get("dependencies", {}), **pacote.get("devDependencies", {})}
+            encontrados = [d for d in TECNOLOGIAS if d in deps]
+        else:
+            texto = conteudo.lower()
+            encontrados = [d for d in TECNOLOGIAS if re.search(rf"(^|[^a-z0-9-]){re.escape(d)}([^a-z0-9-]|$)", texto)]
+        extras += [TECNOLOGIAS[d] for d in encontrados]
+
+    if any(re.search(r"(^|/)(Dockerfile|docker-compose\.ya?ml|compose\.ya?ml)$", c) for c in caminhos):
+        extras.append(("Docker", "#2496ed"))
+
+    # Scripts .sql: tenta descobrir o banco pelo próprio conteúdo.
+    for caminho in [c for c in caminhos if c.endswith(".sql")][:3]:
+        texto = ler_arquivo(repo, caminho).lower()
+        if "mysql" in texto:
+            extras.append(("MySQL", "#4479a1"))
+        elif "postgres" in texto:
+            extras.append(("PostgreSQL", "#336791"))
+        else:
+            extras.append(("SQL", "#e38c00"))
+
+    vistos = set()
+    unicos = []
+    for nome, cor in tags + extras:
+        if nome.lower() not in vistos:
+            vistos.add(nome.lower())
+            unicos.append((nome, cor))
+    return unicos
 
 
 # ---------- desenho do card ----------
@@ -87,17 +204,23 @@ def quebrar(texto, limite=96, max_linhas=2):
     return linhas
 
 
-def card_svg(repo, contribuicao=False):
-    """Card só com nome e descrição do projeto."""
+def clarear(cor, fator=0.55):
+    """Mistura a cor com branco, para o texto das tags."""
+    cor = cor.lstrip("#")
+    r, g, b = (int(cor[i:i + 2], 16) for i in (0, 2, 4))
+    r, g, b = (round(c + (255 - c) * fator) for c in (r, g, b))
+    return f"#{r:02x}{g:02x}{b:02x}"
+
+
+def card_svg(repo, commits, tags):
+    """Card com nome, descrição, quantidade de commits e tecnologias."""
     titulo = repo["name"]
-    descricao = repo["description"] or (
-        f"Repositório de {repo['owner']['login']} em que colaborei."
-        if contribuicao else "Projeto sem descrição no GitHub."
-    )
-    linhas = quebrar(descricao)
+    linhas = quebrar(repo["description"] or "Projeto sem descrição no GitHub.")
 
     y_desc = 92
-    altura = y_desc + 24 * (len(linhas) - 1) + 38
+    y_info = y_desc + 24 * (len(linhas) - 1) + 34
+    y_tags = y_info + 22
+    altura = (y_tags + 24 + 22) if tags else (y_info + 30)
 
     partes = [
         f'<svg xmlns="http://www.w3.org/2000/svg" width="880" height="{altura}" viewBox="0 0 880 {altura}" '
@@ -111,6 +234,7 @@ def card_svg(repo, contribuicao=False):
         "  </defs>",
         "  <style>",
         "    .sans { font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', Arial, sans-serif; }",
+        "    .mono { font-family: Consolas, 'DejaVu Sans Mono', 'SFMono-Regular', Menlo, monospace; }",
         "  </style>",
         "",
         f'  <rect x="0.5" y="0.5" width="879" height="{altura - 1}" rx="16" fill="url(#bg)" stroke="#30363d"/>',
@@ -121,6 +245,28 @@ def card_svg(repo, contribuicao=False):
     for i, linha in enumerate(linhas):
         partes.append(f'    <text x="40" y="{y_desc + 24 * i}">{escape(linha)}</text>')
     partes.append("  </g>")
+
+    partes.append(
+        f'  <text x="40" y="{y_info}" class="mono" font-size="13" fill="#8b949e">'
+        f'{commits} commit{"s" if commits != 1 else ""}</text>'
+    )
+
+    if tags:
+        partes.append("")
+        partes.append("  <!-- tecnologias -->")
+        partes.append('  <g class="mono" font-size="12.5">')
+        x = 40
+        for nome, cor in tags:
+            w = round(len(nome) * 7.6 + 20)
+            if x + w > 840:
+                break
+            partes.append(
+                f'    <rect x="{x}" y="{y_tags}" width="{w}" height="24" rx="6" fill="{cor}" fill-opacity="0.22"/>'
+                f'<text x="{x + w / 2}" y="{y_tags + 16}" text-anchor="middle" fill="{clarear(cor)}">{escape(nome)}</text>'
+            )
+            x += w + 8
+        partes.append("  </g>")
+
     partes.append("</svg>")
     return "\n".join(partes) + "\n"
 
@@ -142,22 +288,26 @@ def bloco_readme(cards):
 
 def main():
     dados = graphql(QUERY, login=USER)["user"]
-
-    proprios = [r for r in dados["repositories"]["nodes"] if r["name"] not in IGNORAR]
-    contribuicoes = [r for r in dados["repositoriesContributedTo"]["nodes"] if not r["isPrivate"]]
+    autor_id = dados["id"]
+    repos = [r for r in dados["repositories"]["nodes"] if r["name"] not in IGNORAR]
 
     PASTA_CARDS.mkdir(parents=True, exist_ok=True)
     gerados, cards = set(), []
 
-    for repo, contribuicao in [(r, False) for r in proprios] + [(r, True) for r in contribuicoes]:
-        nome_arquivo = re.sub(r"[^a-z0-9]+", "-", repo["nameWithOwner"].lower()).strip("-") + ".svg"
-        (PASTA_CARDS / nome_arquivo).write_text(card_svg(repo, contribuicao), encoding="utf-8")
+    for repo in repos:
+        commits = contar_commits(repo, autor_id)
+        tags = tecnologias(repo)
+        svg = card_svg(repo, commits, tags)
+        # O hash no nome faz o navegador baixar o card de novo quando ele muda.
+        base = re.sub(r"[^a-z0-9]+", "-", repo["nameWithOwner"].lower()).strip("-")
+        nome_arquivo = f"{base}-{hashlib.sha1(svg.encode()).hexdigest()[:8]}.svg"
+        (PASTA_CARDS / nome_arquivo).write_text(svg, encoding="utf-8")
         gerados.add(nome_arquivo)
         alt = f"{repo['name']} — {repo['description'] or 'projeto no GitHub'}"
         cards.append((repo["url"], nome_arquivo, alt))
-        print(f"card: {nome_arquivo}")
+        print(f"card: {nome_arquivo} ({commits} commits; {', '.join(n for n, _ in tags) or 'sem tecnologias'})")
 
-    # remove cards de repositórios que sumiram ou ficaram privados
+    # remove cards antigos ou de repositórios que sumiram/ficaram privados
     for antigo in PASTA_CARDS.glob("*.svg"):
         if antigo.name not in gerados:
             antigo.unlink()

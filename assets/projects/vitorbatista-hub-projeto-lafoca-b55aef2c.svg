@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="194" viewBox="0 0 880 194" role="img" aria-label="PROJETO-LAFOCA">
+  <!-- Gerado por scripts/update_projects.py — não edite à mão. -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#161b22"/>
+      <stop offset="1" stop-color="#1c0f2b"/>
+    </linearGradient>
+  </defs>
+  <style>
+    .sans { font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', Arial, sans-serif; }
+    .mono { font-family: Consolas, 'DejaVu Sans Mono', 'SFMono-Regular', Menlo, monospace; }
+  </style>
+
+  <rect x="0.5" y="0.5" width="879" height="193" rx="16" fill="url(#bg)" stroke="#30363d"/>
+
+  <text x="40" y="58" class="sans" font-size="26" font-weight="700" fill="#f0e6ff">PROJETO-LAFOCA</text>
+  <g class="sans" font-size="16" fill="#b1bac4">
+    <text x="40" y="92">Projeto sem descrição no GitHub.</text>
+  </g>
+  <text x="40" y="126" class="mono" font-size="13" fill="#8b949e">3 commits</text>
+
+  <!-- tecnologias -->
+  <g class="mono" font-size="12.5">
+    <rect x="40" y="148" width="50" height="24" rx="6" fill="#e34c26" fill-opacity="0.22"/><text x="65.0" y="164" text-anchor="middle" fill="#f2ae9d">HTML</text>
+    <rect x="98" y="148" width="43" height="24" rx="6" fill="#663399" fill-opacity="0.22"/><text x="119.5" y="164" text-anchor="middle" fill="#baa3d1">CSS</text>
+  </g>
+</svg>
