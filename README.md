@@ -57,11 +57,15 @@ Meu foco hoje:
 ## `~/projetos`
 
 <p align="center">
-  <img src="./assets/acaiconecta.svg" width="88%" alt="AçaíConecta — plataforma de delivery para as batedeiras de açaí de Cametá, em desenvolvimento" />
+  <img src="./assets/acaiconecta.svg" width="88%" alt="AçaíConecta — plataforma de delivery para as batedeiras de açaí de Cametá" />
 </p>
 
 <!-- PROJETOS:START -->
 <!-- Gerado por scripts/update_projects.py — não edite à mão. -->
+
+<p align="center">
+  <a href="https://github.com/vitorbatista-hub/AppRotinaAcademica"><img src="./assets/projects/vitorbatista-hub-approtinaacademica.svg" width="88%" alt="AppRotinaAcademica — projeto no GitHub" /></a>
+</p>
 
 <p align="center">
   <a href="https://github.com/vitorbatista-hub/Mentis"><img src="./assets/projects/vitorbatista-hub-mentis.svg" width="88%" alt="Mentis — Plataforma em concepção para apoiar o cuidado psicossocial na Amazônia, conectando pacientes dos CAPS, cuidadores e profissionais de saúde." /></a>
