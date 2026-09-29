@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="180" viewBox="0 0 880 180" role="img" aria-label="Mentis">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="194" viewBox="0 0 880 194" role="img" aria-label="PROJETO-LAFOCA">
   <!-- Gerado por scripts/update_projects.py — não edite à mão. -->
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
@@ -14,7 +14,7 @@
       <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.06"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <clipPath id="forma"><rect width="880" height="180" rx="16"/></clipPath>
+    <clipPath id="forma"><rect width="880" height="194" rx="16"/></clipPath>
   </defs>
   <style>
     .sans { font-family: 'Segoe UI', Ubuntu, 'Helvetica Neue', Arial, sans-serif; }
@@ -23,22 +23,27 @@
     @keyframes in { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: none; } }
     .borda { opacity: .15; animation: respira 6s ease-in-out 1s infinite; }
     @keyframes respira { 0%,100% { opacity: .15; } 50% { opacity: .55; } }
-    .brilho { transform: translateX(-320px) skewX(-20deg); animation: varre 1.8s ease-in-out .8s forwards; }
-    @keyframes varre { to { transform: translateX(1200px) skewX(-20deg); } }
+    .brilho { transform: translateX(-320px) skewX(-20deg); animation: varre 2s ease-in-out .8s infinite; }
+    @keyframes varre { 0% { transform: translateX(-320px) skewX(-20deg); } 75%,100% { transform: translateX(1200px) skewX(-20deg); } }
     .traco { transform-origin: 40px 0; transform: scaleX(0); animation: cresce .8s cubic-bezier(.2,.8,.2,1) .3s forwards; }
     @keyframes cresce { to { transform: scaleX(1); } }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; opacity: 1 !important; transform: none !important; } .brilho { display: none; } .borda { opacity: .3 !important; } }
   </style>
 
-  <rect x="0.5" y="0.5" width="879" height="179" rx="16" fill="url(#bg)" stroke="#30363d"/>
-  <rect class="borda" x="0.5" y="0.5" width="879" height="179" rx="16" fill="none" stroke="url(#acento)" stroke-width="1.5"/>
-  <g clip-path="url(#forma)"><rect class="brilho" x="0" y="0" width="160" height="180" fill="url(#brilho)"/></g>
+  <rect x="0.5" y="0.5" width="879" height="193" rx="16" fill="url(#bg)" stroke="#30363d"/>
+  <rect class="borda" x="0.5" y="0.5" width="879" height="193" rx="16" fill="none" stroke="url(#acento)" stroke-width="1.5"/>
+  <g clip-path="url(#forma)"><rect class="brilho" x="0" y="0" width="160" height="194" fill="url(#brilho)"/></g>
 
-  <text x="40" y="58" class="sans in" font-size="26" font-weight="700" fill="#f0e6ff" style="animation-delay: .1s">Mentis</text>
+  <text x="40" y="58" class="sans in" font-size="26" font-weight="700" fill="#f0e6ff" style="animation-delay: .1s">PROJETO-LAFOCA</text>
   <rect class="traco" x="40" y="69" width="36" height="3" rx="1.5" fill="url(#acento)"/>
   <g class="sans in" font-size="16" fill="#b1bac4" style="animation-delay: .25s">
-    <text x="40" y="92">Plataforma em concepção para apoiar o cuidado psicossocial na Amazônia, conectando pacientes dos</text>
-    <text x="40" y="116">CAPS, cuidadores e profissionais de saúde.</text>
+    <text x="40" y="92">Projeto sem descrição no GitHub.</text>
   </g>
-  <text x="40" y="150" class="mono in" font-size="13" fill="#8b949e" style="animation-delay: .4s">2 commits</text>
+  <text x="40" y="126" class="mono in" font-size="13" fill="#8b949e" style="animation-delay: .4s">3 commits</text>
+
+  <!-- tecnologias -->
+  <g class="mono" font-size="12.5">
+    <g class="in" style="animation-delay: 0.50s"><rect x="40" y="148" width="50" height="24" rx="6" fill="#e34c26" fill-opacity="0.22"/><text x="65.0" y="164" text-anchor="middle" fill="#f2ae9d">HTML</text></g>
+    <g class="in" style="animation-delay: 0.58s"><rect x="98" y="148" width="43" height="24" rx="6" fill="#663399" fill-opacity="0.22"/><text x="119.5" y="164" text-anchor="middle" fill="#baa3d1">CSS</text></g>
+  </g>
 </svg>

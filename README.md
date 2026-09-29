@@ -60,19 +60,19 @@ Meu foco hoje:
 <!-- Gerado por scripts/update_projects.py — não edite à mão. -->
 
 <p align="center">
-  <a href="https://github.com/vitorbatista-hub/AppRotinaAcademica"><img src="./assets/projects/vitorbatista-hub-approtinaacademica-8ecb208f.svg" width="88%" alt="AppRotinaAcademica — Aplicativo mobile para organizar a rotina acadêmica de estudantes, desenvolvido com React Native, Expo (SDK 57) e Expo Router como trabalho da disciplina Tópicos Especiais em Sistemas de Informação." /></a>
+  <a href="https://github.com/vitorbatista-hub/AppRotinaAcademica"><img src="./assets/projects/vitorbatista-hub-approtinaacademica-3a585fe6.svg" width="88%" alt="AppRotinaAcademica — Aplicativo mobile para organizar a rotina acadêmica de estudantes, desenvolvido com React Native, Expo (SDK 57) e Expo Router como trabalho da disciplina Tópicos Especiais em Sistemas de Informação." /></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/vitorbatista-hub/AcaiConecta"><img src="./assets/projects/vitorbatista-hub-acaiconecta-5c9cdb59.svg" width="88%" alt="AcaiConecta — Plataforma digital que conecta consumidores a batedeiras de açaí tradicional em Cametá/PA." /></a>
+  <a href="https://github.com/vitorbatista-hub/AcaiConecta"><img src="./assets/projects/vitorbatista-hub-acaiconecta-aa9628bf.svg" width="88%" alt="AcaiConecta — Plataforma digital que conecta consumidores a batedeiras de açaí tradicional em Cametá/PA." /></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/vitorbatista-hub/Mentis"><img src="./assets/projects/vitorbatista-hub-mentis-691729de.svg" width="88%" alt="Mentis — Plataforma em concepção para apoiar o cuidado psicossocial na Amazônia, conectando pacientes dos CAPS, cuidadores e profissionais de saúde." /></a>
+  <a href="https://github.com/vitorbatista-hub/Mentis"><img src="./assets/projects/vitorbatista-hub-mentis-4065e588.svg" width="88%" alt="Mentis — Plataforma em concepção para apoiar o cuidado psicossocial na Amazônia, conectando pacientes dos CAPS, cuidadores e profissionais de saúde." /></a>
 </p>
 
 <p align="center">
-  <a href="https://github.com/vitorbatista-hub/PROJETO-LAFOCA"><img src="./assets/projects/vitorbatista-hub-projeto-lafoca-160fe7e4.svg" width="88%" alt="PROJETO-LAFOCA — projeto no GitHub" /></a>
+  <a href="https://github.com/vitorbatista-hub/PROJETO-LAFOCA"><img src="./assets/projects/vitorbatista-hub-projeto-lafoca-cafeca47.svg" width="88%" alt="PROJETO-LAFOCA — projeto no GitHub" /></a>
 </p>
 
 <!-- PROJETOS:END -->
