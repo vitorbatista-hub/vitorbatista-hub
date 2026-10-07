@@ -60,7 +60,7 @@ Meu foco hoje:
 <!-- Gerado por scripts/update_projects.py — não edite à mão. -->
 
 <p align="center">
-  <a href="https://github.com/vitorbatista-hub/AppRotinaAcademica"><img src="./assets/projects/vitorbatista-hub-approtinaacademica-d9ad6c82.svg" width="88%" alt="AppRotinaAcademica — Aplicativo mobile para organizar a rotina acadêmica de estudantes, desenvolvido com React Native, Expo (SDK 57) e Expo Router como trabalho da disciplina Tópicos Especiais em Sistemas de Informação." /></a>
+  <a href="https://github.com/vitorbatista-hub/AppRotinaAcademica"><img src="./assets/projects/vitorbatista-hub-approtinaacademica-8a426ad5.svg" width="88%" alt="AppRotinaAcademica — Aplicativo mobile para organizar a rotina acadêmica de estudantes, desenvolvido com React Native, Expo (SDK 57) e Expo Router como trabalho da disciplina Tópicos Especiais em Sistemas de Informação." /></a>
 </p>
 
 <p align="center">
